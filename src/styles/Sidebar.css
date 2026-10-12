@@ -1,0 +1,65 @@
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: var(--sidebar-width);
+  background: var(--sidebar-bg);
+  color: #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  padding: 22px 14px;
+  z-index: 30;
+  transition: transform 0.25s ease;
+}
+
+.brand { display: flex; align-items: center; gap: 12px; padding: 4px 10px 22px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+.brand-logo { font-size: 1.8rem; }
+.brand-name { font-weight: 700; font-size: 1.1rem; color: #fff; }
+.brand-sub { font-size: 0.75rem; color: #9ca3af; }
+
+.nav { display: flex; flex-direction: column; gap: 4px; margin-top: 18px; }
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 12px;
+  border-radius: 8px;
+  color: #cbd5e1;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s;
+}
+.nav-link:hover { background: rgba(255, 255, 255, 0.07); color: #fff; }
+.nav-link.active { background: var(--primary); color: #fff; }
+.nav-icon { width: 20px; text-align: center; }
+
+.sidebar-footer { margin-top: auto; padding: 10px; font-size: 0.75rem; color: #6b7280; }
+
+/* Mobile top bar (hidden on desktop) */
+.topbar { display: none; }
+.backdrop { display: none; }
+
+@media (max-width: 900px) {
+  .topbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 56px;
+    padding: 0 14px;
+    background: var(--sidebar-bg);
+    color: #fff;
+    z-index: 20;
+  }
+  .menu-btn {
+    background: transparent;
+    border: 0;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .topbar-title { font-weight: 600; }
+  .sidebar { transform: translateX(-100%); box-shadow: 4px 0 24px rgba(0, 0, 0, 0.3); }
+  .sidebar.open { transform: translateX(0); }
+  .backdrop { display: block; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.45); z-index: 25; }
+}
